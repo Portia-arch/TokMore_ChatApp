@@ -21,7 +21,7 @@ class Message extends React.Component {
 Message.defaultProps = {
     message: '',
     username: '',
-    fromMe: false //
+    fromMe: true
 };
 
 export default Message;

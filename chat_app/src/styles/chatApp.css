@@ -42,7 +42,7 @@ h3 {
 }
 
 .message.from-me .message-body {
-  background-color: #af9570;
+  background-color: #e41776;
   color: white;
 }
 
@@ -62,6 +62,6 @@ h3 {
 .username {
   font-weight: bold;
   font-size: 0.9rem;
-  color: rgb(29, 26, 26);
+  color: rgb(132, 30, 216);
   margin-bottom: 5px;
 }

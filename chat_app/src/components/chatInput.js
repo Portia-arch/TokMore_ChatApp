@@ -1,43 +1,51 @@
-
+/**
+ * The chatInput component willl provide an input box that a user will use to type in a message
+ * Since React ES6 doesn't bind 'this' to event handlers by default,I'll bind the maunually.
+ * A updateMessage event will be the input box that will take in a component state and set it aside for future use.
+ * The chatInput will have event handlers for sending the message, stoping the form form refreshing the page,
+ * clearing the input box after hitting enter and calling the onSend callback to display the message using the 'this.state'.
+ * 
+ */
 
 import React from 'react';
+
 
 class ChatInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chatInput: "" };
+    this.state = { message: '' };
 
-    // React ES6 does not bind 'this' to event handlers by default
-    this.textChangeHandler = this.textChangeHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-  }
-
-  // Takes in the input typed into the input box and puts it 
-  //in a component state so that we can use this value later
-  textChangeHandler(event) {
-    this.setState({ chatInput: event.target.value });
+    // React ES6 binding 'this and event handlers
+    this.onSubmit = this.onSubmit.bind(this);
+    this.updateMessage = this.updateMessage.bind(this);
   }
 
   // eventhandler for sending the message
-  submitHandler(event) {
+  onSubmit(event){
+    const message  = this.state
+    // After hitting enter clear the input box
+    this.setState({ message: '' });
+
+    // Call the onSend callback with the chatInput message
+    this.props.onSend(this.state.message);
+
     // Stop the form from refreshing the page on submit
     event.preventDefault();
-
-    // After hiting enter clear the input box
-    this.setState({ chatInput: "" });
-
-    // When sending the message, call the onSend callback with the chatInput message using the 'this.state'
-    this.props.onSend(this.state.chatInput);
+  }
+    // Update and save component state value for later 
+    updateMessage(event){
+    this.setState({ message: event.target.value });
   }
 
   render() {
+
     return (
-      <form className="chat-input" onSubmit={this.submitHandler}>
+      <form className="chat-input" onSubmit={this.onSubmit}>
         <input
           type="text"
-          value={this.state.chatInput}
-          onChange={this.textChangeHandler}
-          placeholder="Write a message..."
+          value={this.state.message}
+          onChange={this.updateMessage}
+          placeholder="Write your message..."
           required
         />
       </form>

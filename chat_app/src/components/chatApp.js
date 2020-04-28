@@ -1,7 +1,11 @@
+/**
+ * This the main app screen component. This should allow for the display of all the messages sent and recieve.
+ * First I need a server connection so that I can send a message. With the help of socket.io I can have server for that. 
+ */
+
 import React from "react";
 import io from "socket.io-client";
 import config from "../config";
-
 import Messages from "./text";
 import ChatInput from "./chatInput";
 
@@ -9,10 +13,12 @@ require("../styles/chatApp.css");
 
 class ChatApp extends React.Component {
   socket = {};
+  
   constructor(props) {
     super(props);
+    // an array to store messages
     this.state = { messages: [] };
-    this.sendHandler = this.sendHandler.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
 
     // Connect to the server
     this.socket = io(config.api, {
@@ -25,11 +31,16 @@ class ChatApp extends React.Component {
     });
   }
 
-  sendHandler(message) {
+  sendMessage(message) {
     const messageObject = {
-      username: this.props.username,
+      username: this.state.username,
       message,
     };
+
+    /* socket.on listens "sendMessage" from client and io.emit sends the message out to clients */
+    socket.on('sendMessage', (message) => {
+      io.emit('receiveMessage', ChatInput(message.from, message.ChatInput));
+    });
 
     // Emit the message to the server
     this.socket.emit("client:message", messageObject);
@@ -50,13 +61,13 @@ class ChatApp extends React.Component {
       <div className="container">
         <h3>TokMore</h3>
         <Messages messages={this.state.messages} />
-        <ChatInput onSend={this.sendHandler} />
+        <ChatInput onSend={this.sendMessage} />
       </div>
     );
   }
 }
 ChatApp.defaultProps = {
-  username: "Anonymous",
+  username: "Anonymous"
 };
 
 export default ChatApp;

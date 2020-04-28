@@ -6,12 +6,13 @@ class Message extends React.Component {
         const fromMe = this.props.fromMe ? 'from-me' : '';
 
         return (
+            //should display the message sent
             <div className={`message ${fromMe}`}>
                 <div className='username'>
                     {this.props.username}
                 </div>
                 <div className='message-body'>
-                    {this.props.message}
+                    {this.props.updateMessage}
                 </div>
             </div>
         );
@@ -19,7 +20,7 @@ class Message extends React.Component {
 }
 
 Message.defaultProps = {
-    message: '',
+    updateMessage: '',
     username: '',
     fromMe: true
 };

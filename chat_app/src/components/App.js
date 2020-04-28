@@ -1,3 +1,10 @@
+/**
+ * The App components renders a login page that will be filled out by a user so that they can log in.
+ * After a user has inserted a user name the event handlers will then redirect the user to the main app screen
+ * 
+ * 
+ */
+
 import React from 'react';
 import ChatApp from './chatApp';
 

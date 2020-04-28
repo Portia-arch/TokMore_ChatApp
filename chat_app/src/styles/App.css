@@ -50,6 +50,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+  color: white;
   -webkit-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
   -moz-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
   box-shadow: -10px 10px 0px rgba(50,50,50,0.15);

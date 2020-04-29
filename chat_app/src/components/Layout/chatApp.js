@@ -5,11 +5,11 @@
 
 import React from "react";
 import io from "socket.io-client";
-import config from "../config";
-import Messages from "./text";
-import ChatInput from "./chatInput";
+import config from "../../config";
+import Messages from "../text";
+import ChatInput from "../chatInput";
 
-require("../styles/chatApp.css");
+require('../../styles/chatApp.css')
 
 class ChatApp extends React.Component {
   socket = {};
@@ -38,9 +38,9 @@ class ChatApp extends React.Component {
     };
 
     /* socket.on listens "sendMessage" from client and io.emit sends the message out to clients */
-    socket.on('sendMessage', (message) => {
-      io.emit('receiveMessage', ChatInput(message.from, message.ChatInput));
-    });
+    // socket.on('sendMessage', (message) => {
+    //   io.emit('receiveMessage', ChatInput (message.from, message.ChatInput));
+    // });
 
     // Emit the message to the server
     this.socket.emit("client:message", messageObject);
@@ -59,7 +59,6 @@ class ChatApp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>TokMore</h3>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.sendMessage} />
       </div>

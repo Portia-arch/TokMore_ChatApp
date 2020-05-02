@@ -37,15 +37,10 @@ class ChatApp extends React.Component {
       message,
     };
 
-    /* socket.on listens "sendMessage" from client and io.emit sends the message out to clients */
-    // socket.on('sendMessage', (message) => {
-    //   io.emit('receiveMessage', ChatInput (message.from, message.ChatInput));
-    // });
-
     // Emit the message to the server
     this.socket.emit("client:message", messageObject);
 
-    messageObject.fromMe = true;
+    messageObject.fromMe = false;
     this.addMessage(messageObject);
   }
 
@@ -66,7 +61,7 @@ class ChatApp extends React.Component {
   }
 }
 ChatApp.defaultProps = {
-  username: "Anonymous"
+  username: ""
 };
 
 export default ChatApp;

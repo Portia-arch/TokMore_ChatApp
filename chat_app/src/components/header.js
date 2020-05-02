@@ -24,7 +24,7 @@ class Header extends React.Component {
 
                         <Grid item>
                             <div>
-                                <Button raised color="accent" onSubmit={this.usernameSubmitHandler}>
+                                <Button raised color="accent">
                                     Login
                                 </Button>
                             </div>

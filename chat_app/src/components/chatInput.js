@@ -4,7 +4,6 @@
  * A updateMessage event will be the input box that will take in a component state and set it aside for future use.
  * The chatInput will have event handlers for sending the message, stoping the form form refreshing the page,
  * clearing the input box after hitting enter and calling the onSend callback to display the message using the 'this.state'.
- * 
  */
 
 import React from 'react';
@@ -22,19 +21,20 @@ class ChatInput extends React.Component {
 
   // eventhandler for sending the message
   onSubmit(event){
-    const message  = this.state
-    // After hitting enter clear the input box
-    this.setState({ message: '' });
+    // Stop the form from refreshing the page on submit
+    event.preventDefault();
 
     // Call the onSend callback with the chatInput message
     this.props.onSend(this.state.message);
 
-    // Stop the form from refreshing the page on submit
-    event.preventDefault();
+     // After hitting enter clear the input box
+    this.setState({ message: '' });
   }
     // Update and save component state value for later 
     updateMessage(event){
-    this.setState({ message: event.target.value });
+    this.setState({ 
+      message: event.target.value
+     });
   }
 
   render() {
@@ -43,7 +43,7 @@ class ChatInput extends React.Component {
       <form className="chat-input" onSubmit={this.onSubmit}>
         <input
           type="text"
-          value={this.state.message}
+          value={this.setState.message}
           onChange={this.updateMessage}
           placeholder="Write your message..."
           required

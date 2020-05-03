@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-// require('../styles/chatInput.css')
+require('../styles/chatInput.css')
 
 
 class ChatInput extends React.Component {
@@ -50,7 +50,7 @@ class ChatInput extends React.Component {
           placeholder="Write your message..."
           required
         />
-          <input type="submit" value="submit" id="submit"/>
+          <input type="submit" value="send" id="submit" className="hello"/>
       </form>
     );
   }

@@ -8,6 +8,8 @@
 
 import React from 'react';
 
+// require('../styles/chatInput.css')
+
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -48,6 +50,7 @@ class ChatInput extends React.Component {
           placeholder="Write your message..."
           required
         />
+        <button>Send</button>
       </form>
     );
   }

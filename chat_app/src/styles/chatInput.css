@@ -1,0 +1,27 @@
+.chat-inputs form {
+  /* This bit sets up the horizontal layout */
+  /* display:flex;
+  flex-direction:row; */
+
+  /* I've used padding so you can see the edges of the elements. */
+  padding:2px;
+}
+
+input {
+  /* Tell the input to use all the available space */
+  flex-grow:2;
+  /* And hide the input's outline, so the form looks like the outline */
+  border:none;
+}
+
+input:focus {
+  /* removing the input focus blue box. Put this on the form if you like. */
+  outline: none;
+}
+
+button {
+  /* Just a little styling to make it pretty */
+  border:1px solid blue;
+  background:blue;
+  color:white;
+}

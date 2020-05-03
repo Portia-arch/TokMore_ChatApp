@@ -51,7 +51,7 @@ class Login extends React.Component {
                         placeholder="Enter your username..."
                         required />
                 </div>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Join" />
             </form>
         );
     }

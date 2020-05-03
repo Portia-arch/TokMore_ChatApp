@@ -1,27 +1,18 @@
-.chat-inputs form {
-  /* This bit sets up the horizontal layout */
-  /* display:flex;
-  flex-direction:row; */
-
-  /* I've used padding so you can see the edges of the elements. */
-  padding:2px;
+#submit {
+  position: absolute;
+  left: 82.98%;
+  right: 1.28%;
+  top: 31.58%;
+  bottom: 31.58%;
+  /* margin-left: -100px; */
 }
 
-input {
-  /* Tell the input to use all the available space */
-  flex-grow:2;
-  /* And hide the input's outline, so the form looks like the outline */
-  border:none;
+#submit:hover {
+  color: white;
+  -webkit-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
+  -moz-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
+  box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
+  background-color: #1e1e1e;
 }
 
-input:focus {
-  /* removing the input focus blue box. Put this on the form if you like. */
-  outline: none;
-}
-
-button {
-  /* Just a little styling to make it pretty */
-  border:1px solid blue;
-  background:blue;
-  color:white;
-}
+  

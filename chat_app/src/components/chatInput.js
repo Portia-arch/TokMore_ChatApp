@@ -50,7 +50,7 @@ class ChatInput extends React.Component {
           placeholder="Write your message..."
           required
         />
-        <button>Send</button>
+          <input type="submit" value="submit" id="submit"/>
       </form>
     );
   }

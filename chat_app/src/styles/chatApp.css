@@ -1,3 +1,7 @@
+*body{
+  
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,16 +23,18 @@ h3 {
 }
 
 .chat-input {
-  position: relative;
+  position: absolute;
   overflow: hidden;
   padding: 0 40px;
   flex-shrink: 0;
 }
 
 .chat-input input[type="text"] {
-  width: 100%;
+  width: 1265px;
+  height: 75px;
+  margin-top: 470px;
   margin-left: -20px;
-  margin-right: -20px;
+  margin-right: -230px;
 }
 
 .message.from-me .username {

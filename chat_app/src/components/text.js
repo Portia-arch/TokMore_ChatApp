@@ -1,3 +1,9 @@
+/**
+ * This is the individual message component. 
+ * Below is the logic to display it on the right if the user sent the message
+ * or on the left if it was recieved from someone else.
+ */
+
 import React from 'react';
 
 class Message extends React.Component {
@@ -12,7 +18,7 @@ class Message extends React.Component {
                     {this.props.username}
                 </div>
                 <div className='message-body'>
-                    {this.props.sendMessage}
+                    {this.props.updateMessage}
                 </div>
             </div>
         );
@@ -20,7 +26,7 @@ class Message extends React.Component {
 }
 
 Message.defaultProps = {
-    sendMessage: '',
+    updateMessage: '',
     username: '',
     fromMe: true
 };

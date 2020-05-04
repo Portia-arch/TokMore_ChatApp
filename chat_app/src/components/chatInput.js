@@ -1,5 +1,5 @@
 /**
- * The chatInput component willl provide an input box that a user will use to type in a message
+ * The chatInput component will provide an input box that a user will use to type in a message and send it.
  * Since React ES6 doesn't bind 'this' to event handlers by default,I'll bind the maunually.
  * A updateMessage event will be the input box that will take in a component state and set it aside for future use.
  * The chatInput will have event handlers for sending the message, stoping the form form refreshing the page,
@@ -11,6 +11,7 @@ import React from 'react';
 require('../styles/chatInput.css')
 
 
+// Display a user input form and submit the input
 class ChatInput extends React.Component {
   constructor(props) {
     super(props);

@@ -1,4 +1,5 @@
 /**
+ * This is the first screen seen by the user. 
  * The login page renders a login form that will be filled out by a new user so that they can log in.
  * After a user has inserted a user name the event handlers will then redirect the user to the main app screen.
  * If the user is already logged in they can just click the login buttom and be sent to the main app screen.
@@ -56,5 +57,9 @@ class Login extends React.Component {
         );
     }
 }
+
+Login.defaultProps = {
+
+};
 
 export default Login;

@@ -1,6 +1,8 @@
 /**
- * This the main app screen component. This should allow for the display of all the messages sent and recieve.
- * First I need a server connection so that I can send a message. With the help of socket.io I can have server for that.
+ * This the main app screen component, where the logic of the app will be. This should allow for the display of all the messages sent and recieve.
+ * First I need a server connection so that I can send a message(communicating with the server). 
+ * With the help of socket.io.
+ * I will then pass the data recieved from the server to the message component to be displayed
  */
 
 import React from "react";
@@ -11,6 +13,7 @@ import ChatInput from "../chatInput";
 
 require("../../styles/chatApp.css");
 
+// Render the main chat application components
 class ChatApp extends React.Component {
   socket = {};
 

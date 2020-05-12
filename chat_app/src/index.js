@@ -1,7 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-
 /**
  *  This is where I render the main component into the dom
  *  We tell the ReactJs library that we want to display our main App component
@@ -9,9 +5,14 @@ import App from './components/App';
     inside the index.html file. Our React App component will be injected into here
  */
 
-//
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
     <App />,
   document.getElementById('root')
 );
 
+serviceWorker.unregister();

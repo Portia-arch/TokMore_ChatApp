@@ -1,33 +1,72 @@
-/**
- * This is the main display of the application. It shows a list of all the
- * messages which have been sent and recieved during the current chat session.
- */
+import React, { Component } from 'react';
+import io from 'socket.io-client'
+import { USER_CONNECTED, LOGOUT } from '../Events'
+import LoginForm from './LoginForm'
+import ChatContainer from './chats/chatContainer'
 
-import React from 'react';
+const socketUrl = "http://localhost:3231"
+class Layout extends Component {
 
-import Message from './Message';
+    constructor(props) {
+        super(props);
 
-class Messages extends React.Component {
+        this.state = {
+            socket: null,
+            user: null
+        };
+    }
+
+    componentWillMount() {
+        this.initSocket()
+    }
+
+	/*
+	*	Connect to and initializes the socket.
+	*/
+    initSocket = () => {
+        const socket = io(socketUrl)
+
+        socket.on('connect', () => {
+            console.log("Connected");
+        })
+
+        this.setState({ socket })
+    }
+
+	/*
+	* 	Sets the user property in state 
+	*	@param user {id:number, name:string}
+	*/
+    setUser = (user) => {
+        const { socket } = this.state
+        socket.emit(USER_CONNECTED, user);
+        this.setState({ user })
+    }
+
+	/*
+	*	Sets the user property in state to null.
+	*/
+    logout = () => {
+        const { socket } = this.state
+        socket.emit(LOGOUT)
+        this.setState({ user: null })
+
+    }
+
 
     render() {
-        // Loop through all the messages in the state and create a Message component
-        const createChat = ({messages = [], name = 'ChatRoom', user = []} = {}) => ({
-            id:uuidv4(),
-            name,
-            messages,
-            users,
-            typingUsers: []
-        })
-            return (
-                //hello
-                c= b*a
-            )
-        
+        const { socket, user } = this.state
+        return (
+            <div className="container">
+                {
+                    !user ?
+                        <LoginForm socket={socket} setUser={this.setUser} />
+                        :
+                        <ChatContainer socket={socket} user={user} logout={this.logout} />
+                }
+            </div>
+        );
     }
 }
 
-Messages.defaultProps = {
-    messages: []
-};
-
-export default Messages;
+export default Layout;

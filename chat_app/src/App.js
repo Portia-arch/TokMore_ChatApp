@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Login from './components/Layout/login';
-import Header from './components/header';
+import Header from './header';
 
 require('./styles/App.css');
 

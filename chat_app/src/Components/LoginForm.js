@@ -1,42 +1,69 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import React, { Component } from 'react';
+import { VERIFY_USER } from "../Events";
 
-class Header extends React.Component {
-    render() {
-      
-        return (
-            <AppBar position="static" style={{ background: 'rgba(137, 43, 226, 0.801)' }}>
-                <Toolbar>
-                    <Grid
-                        justify="space-between" 
-                        container
-                        spacing={22}>
+class LoginForm extends Component {
+    constructor(props) {
+        super(props);
 
-                        <Grid item>
-                            <Typography type="title" variant="h4" color="inherit">
-                               TokMore
-                        </Typography>
-                        </Grid>
-
-                        <Grid item>
-                            <div>
-                                <Button raised color="accent">
-                                    Login
-                                </Button>
-                            </div>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-        ); 
+        this.state = {
+            nickname: "",
+            error: "",
+        };
     }
 
-}
-Header.defaultProps = {
-};
+    setUser = ({ user, isUser }) => {
+        if (isUser) {
+            this.setError("User name taken");
+        } else {
+            this.setError("");
+            this.props.setUser(user);
+        }
+    };
 
-export default Header
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { socket } = this.props;
+        const { nickname } = this.state;
+        socket.emit(VERIFY_USER, nickname, this.setUser);
+    };
+
+    handleChange = (e) => {
+        this.setState({ nickname: e.target.value });
+    };
+
+    setError = (error) => {
+        this.setState({ error });
+    };
+
+    render() {
+        const { nickname, error } = this.state;
+        return (
+            <div className="login">
+                <form onSubmit={this.handleSubmit} className="login-form">
+                    <label htmlFor="nickname">
+                        <p>
+                            Hey there! New to TokMore?
+              <br></br>
+              Let's get you up and running.
+              <br></br>
+              Choose a username and TokMore!
+            </p>
+                    </label>
+                    <input
+                        ref={(input) => {
+                            this.textInput = input;
+                        }}
+                        type="text"
+                        id="nickname"
+                        value={nickname}
+                        onChange={this.handleChange}
+                        placeholder={"What's Your Username?"}
+                    />
+                    <div className="error">{error ? error : null}</div>
+                </form>
+            </div>
+        );
+    }
+}
+
+export default LoginForm;

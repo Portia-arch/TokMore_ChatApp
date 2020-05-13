@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import Header from "../../header";
+// import Header from "../../header";
 
 
 class ChatInput extends Component {
@@ -16,86 +16,93 @@ class ChatInput extends Component {
 
     this.state = {
       message: "",
-      isTyping: false,
+      isTyping: false
     };
+
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.sendMessage();
-    this.setState({ message: "" });
-  };
+    e.preventDefault()
+    this.sendMessage()
+    this.setState({ message: "" })
+  }
 
   sendMessage = () => {
-    this.props.sendMessage(this.state.message);
-  };
+    this.props.sendMessage(this.state.message)
+
+  }
 
   componentWillUnmount() {
-    this.stopCheckingTyping();
+    this.stopCheckingTyping()
   }
 
   sendTyping = () => {
-    this.lastUpdateTime = Date.now();
+    this.lastUpdateTime = Date.now()
     if (!this.state.isTyping) {
-      this.setState({ isTyping: true });
-      this.props.sendTyping(true);
-      this.startCheckingTyping();
+      this.setState({ isTyping: true })
+      this.props.sendTyping(true)
+      this.startCheckingTyping()
     }
-  };
+  }
 
-  /*
-   *	startCheckingTyping
-   *	Start an interval that checks if the user is typing.
-   */
+	/*
+	*	startCheckingTyping
+	*	Start an interval that checks if the user is typing.
+	*/
   startCheckingTyping = () => {
     console.log("Typing");
     this.typingInterval = setInterval(() => {
-      if (Date.now() - this.lastUpdateTime > 300) {
-        this.setState({ isTyping: false });
-        this.stopCheckingTyping();
+      if ((Date.now() - this.lastUpdateTime) > 300) {
+        this.setState({ isTyping: false })
+        this.stopCheckingTyping()
       }
-    }, 300);
-  };
+    }, 300)
+  }
 
-  /*
-   *	stopCheckingTyping
-   *	Start the interval from checking if the user is typing.
-   */
+	/*
+	*	stopCheckingTyping
+	*	Start the interval from checking if the user is typing.
+	*/
   stopCheckingTyping = () => {
     console.log("Stop Typing");
     if (this.typingInterval) {
-      clearInterval(this.typingInterval);
-      this.props.sendTyping(false);
+      clearInterval(this.typingInterval)
+      this.props.sendTyping(false)
     }
-  };
+  }
+
 
   render() {
-    const { message } = this.state;
+    const { message } = this.state
     return (
       <div className="message-input">
-        <Header />
-        <form onSubmit={this.handleSubmit} className="message-form">
+        <form
+          onSubmit={this.handleSubmit}
+          className="message-form">
+
           <input
-            style={{ fontFamily: "Caveat" }}
             id="message"
-            ref={"chatinput"}
+            ref={"messageinput"}
             type="text"
             className="form-control"
             value={message}
-            autoComplete={"off"}
-            placeholder="Let's TokMore"
-            onKeyUp={(e) => {
-              e.keyCode !== 13 && this.sendTyping();
-            }}
-            onChange={({ target }) => {
-              this.setState({ message: target.value });
-            }}
+            autoComplete={'off'}
+            placeholder="Type something interesting"
+            onKeyUp={e => { e.keyCode !== 13 && this.sendTyping() }}
+            onChange={
+              ({ target }) => {
+                this.setState({ message: target.value })
+              }
+            }
           />
-          <button disabled={message.length < 1} type="submit" className="send">
-            {" "}
-            Wola!{" "}
-          </button>
+          <button
+            disabled={message.length < 1}
+            type="submit"
+            className="send"
+
+          > Send </button>
         </form>
+
       </div>
     );
   }

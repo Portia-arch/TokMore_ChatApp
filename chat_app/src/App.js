@@ -1,10 +1,7 @@
-import React, { Fragment } from 'react';
-import Login from './components/Layout/login';
+import React, { Fragment } from "react";
+import Layout from "./Components/Layout";
+import "./index.css";
 import Header from './header';
-
-require('./styles/App.css');
-
-
 
 class App extends React.Component {
   render() {
@@ -13,7 +10,7 @@ class App extends React.Component {
       <Fragment>
       
       <Header />
-      <Login />
+      <Layout />
       </Fragment>
     );
   }

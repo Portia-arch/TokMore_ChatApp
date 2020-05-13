@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Layout from "./Components/Layout";
 import "./index.css";
-import Header from './header';
+// import Header from './header';
 
 class App extends React.Component {
   render() {
@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <Fragment>
       
-      <Header />
+      {/* <Header /> */}
       <Layout />
       </Fragment>
     );

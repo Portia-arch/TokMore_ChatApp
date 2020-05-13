@@ -1,7 +1,7 @@
 const io = require('./server').io
 
 const { VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED,
-    LOGOUT, CHAT_ROOM, MESSAGE_RECIEVED, MESSAGE_SENT,
+    LOGOUT, CHAT_ROOMS, MESSAGE_RECIEVED, MESSAGE_SENT,
     TYPING } = require('../Events')
 
 const { createUser, createMessage, createChat } = require('../factory')
@@ -60,8 +60,8 @@ module.exports = function (socket) {
 
     })
 
-    //Get a Chat Room
-    socket.on(CHAT_ROOM, (callback) => {
+    //Get Community Chat
+    socket.on(CHAT_ROOMS, (callback) => {
         callback(chatRoom)
     })
 

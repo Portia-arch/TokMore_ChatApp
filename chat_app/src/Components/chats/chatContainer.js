@@ -13,7 +13,9 @@ class ChatContainer extends Component {
             chats: [],
             activeChat: null
         };
-    }
+    }   
+
+    // React Life cycle method
 
     componentDidMount() {
         const { socket } = this.props
@@ -22,7 +24,7 @@ class ChatContainer extends Component {
 
 	/*
 	*	Reset the chat back to only the chat passed in.
-	* 	@param chat {Chat}
+	* 	param chat {Chat}
 	*/
     resetChat = (chat) => {
         return this.addChat(chat, true)
@@ -106,7 +108,7 @@ class ChatContainer extends Component {
 
 	/*
 	*	Sends typing status to server.
-	*	chatId {number} the id of the chat being typed in.
+	*	chatId of the chat being typed in.
 	*	typing {boolean} If the user is typing still or not.
 	*/
     sendTyping = (chatId, isTyping) => {
@@ -136,14 +138,14 @@ class ChatContainer extends Component {
                             <div className="chat-room">
                                 <ChatHeading name={activeChat.name} />
                                 <Messages
-                                    messages={activeChat.messages}
-                                    user={user}
+                                    messages={activeChat.messages} // all the messages
+                                    user={user} //current user
                                     typingUsers={activeChat.typingUsers}
                                 />
                                 <MessageInput
                                     sendMessage={
                                         (message) => {
-                                            this.sendMessage(activeChat.id, message)
+                                            this.sendMessage(activeChat.id, message) // takes the current id and the message from the id
                                         }
                                     }
                                     sendTyping={

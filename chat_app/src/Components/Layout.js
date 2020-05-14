@@ -34,8 +34,7 @@ class Layout extends Component {
     }
 
 	/*
-	* 	Sets the user property in state 
-	*	@param user {id:number, name:string}
+	* 	Sets the user property in state using param user {id:number, name:string}
 	*/
     setUser = (user) => {
         const { socket } = this.state
@@ -53,7 +52,9 @@ class Layout extends Component {
 
     }
 
-
+    /**
+     * Renders the Login form and the main screen.
+    */
     render() {
         const { socket, user } = this.state
         return (

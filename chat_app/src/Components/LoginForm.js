@@ -1,3 +1,5 @@
+/** */
+
 import React, { Component } from 'react';
 import { VERIFY_USER } from "../Events";
 

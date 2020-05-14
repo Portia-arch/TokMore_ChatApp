@@ -242,6 +242,7 @@ input,textarea{font-family:Arial}
 }
 
 .chat-header .options{
+    color: #2e2e4f;
     display:flex;
     align-items:center;
     flex-direction:row;
@@ -449,7 +450,7 @@ input,textarea{font-family:Arial}
     border:none;
     height:100%;
     color:#fff;
-    background:#3e3e5e;
+    background:#470366c9;
     transition:all .35s ease-out
 }
 

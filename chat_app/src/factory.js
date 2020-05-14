@@ -41,7 +41,7 @@ const createMessage = ({ message = "", sender = "" } = {}) => ({
  */
 const createChat = ({
     messages = [],
-    name = "Community",
+    name = "TokMore",
     users = [],
 } = {}) => ({
     id: uuidv4(),

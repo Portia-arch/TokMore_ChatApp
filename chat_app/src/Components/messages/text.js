@@ -22,6 +22,10 @@ class Messages extends Component {
 
   render() {
     const { messages, user, typingUsers } = this.props
+
+    /**
+     * this will render the messages that have been send and allow for scrolling if the messages keep on being sent
+     */
     return (
       <div ref='container'
         className="thread-container">

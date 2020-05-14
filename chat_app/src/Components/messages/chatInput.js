@@ -100,7 +100,7 @@ class ChatInput extends Component {
             type="submit"
             className="send"
 
-          > Send </button>
+          > Mjojo </button>
         </form>
 
       </div>

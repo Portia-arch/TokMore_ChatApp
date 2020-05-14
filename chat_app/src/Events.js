@@ -1,3 +1,7 @@
+ /**
+  * Exporting all the events
+  */
+ 
  module.exports = {
      CHAT_ROOMS: "CHAT_ROOMS",
      USER_CONNECTED: "USER_CONNECTED",

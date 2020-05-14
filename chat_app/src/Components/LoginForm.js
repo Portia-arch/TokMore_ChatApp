@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { VERIFY_USER } from "../Events";
 
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -43,11 +44,12 @@ class LoginForm extends Component {
                     <label htmlFor="nickname">
                         <p>
                             Hey there! New to TokMore?
-              <br></br>
-              Let's get you up and running.
-              <br></br>
-              Choose a username and TokMore!
-            </p>
+                        <br></br>
+                        Let's get you up and running.
+                        
+                        <br></br>
+                        Choose a username and TokMore!
+                        </p>
                     </label>
                     <input
                         ref={(input) => {

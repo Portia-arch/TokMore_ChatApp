@@ -2,10 +2,12 @@
 
 In the project directory, you can run:
 
+### `npm i`
+
 ### `npm start`
 
 ### `npm test`
 
-### `npm run build`
+### `npm run react`
 
-### `npm run eject`
+### `npm run server`

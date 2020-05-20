@@ -113,6 +113,9 @@ class ChatContainer extends Component {
     setActiveChat = (activeChat) => {
         this.setState({ activeChat })
     }
+    /**
+     * renders the components of the main screen
+     */
     render() {
         const { user, logout } = this.props
         const { chats, activeChat } = this.state
